@@ -17,20 +17,20 @@ export const MainView = () => {
       })
       .then((data) => {
         console.log(data);
-        const moviesFromAPI = data.map((doc) => {
-          console.log('Doc:', doc);  
+        const moviesFromAPI = data.map((movie) => {
+          console.log('Movie:', movie);  
           return {
-            id: doc._id,
-            Title: doc.Title,
-            ImagePath: doc.ImagePath,
-            Director: doc.Director.Name,
-            Genre: doc.Genre.Name,
-            Description: doc.Description,
-            Featured: doc.Featured,
+            id: movie._id,
+            Title: movie.Title,
+            ImagePath: movie.ImagePath,
+            Director: movie.Director.Name,
+            Genre: movie.Genre.Name,
+            Description: movie.Description,
+            Featured: movie.Featured,
           };
         });
         setMovies(moviesFromAPI);
-        console.log(movies);
+        
       })
       .catch((error) => {
         console.error('There was a problem with the fetch operation: ', error);
