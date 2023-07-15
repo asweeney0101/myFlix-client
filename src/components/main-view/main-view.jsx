@@ -1,14 +1,39 @@
 import { useEffect, useState } from "react";
 import { MovieCard } from "../movie-card/movie-card.jsx";
 import { MovieView } from "../movie-view/movie-view.jsx";
+import { LoginView } from "../login-view/login-view";
+import { SignupView } from "../signup-view/signup-view";
 
 export const MainView = () => {
-   const [movies, setMovies] = useState([ ]);
+   const storedUser = JSON.parse(localStorage.getItem("user"));
+   const storedToken = localStorage.getItem("token");
+   const [user, setUser] = useState(storedUser? storedUser : null);
+   const [token, setToken] = useState(storedToken? storedToken : null);
+   const [movies, setMovies] = useState([]);
+   const [selectedMovie, setSelectedMovie] = useState(null);
+   
 
-
+   if (!user) {
+    return (
+      <>
+        <LoginView
+          onLoggedIn={(user, token) => {
+            setUser(user);
+            setToken(token);
+          }}
+        />
+        or
+        <SignupView />
+      </>
+    );
+  }
 
    useEffect(() => {
-    fetch("https://ajs-movie-api-598adfef849b.herokuapp.com/movies")
+     if (!token) return;
+
+    fetch("https://ajs-movie-api-598adfef849b.herokuapp.com/movies", {
+      headers: { Authorization: `Bearer ${token}` }
+    })
       .then((response) => {
         if (!response.ok) {
           throw new Error('HTTP error ' + response.status);
@@ -31,17 +56,17 @@ export const MainView = () => {
         });
         setMovies(moviesFromAPI);
         
-      })
-      .catch((error) => {
-        console.error('There was a problem with the fetch operation: ', error);
       });
-  }, []);
 
- const [selectedMovie, setSelectedMovie] = useState(null);
+
+  }, [token]);
+
+
 
  if (selectedMovie) {
   return (
-    <MovieView movie={selectedMovie} onBackClick={() => setSelectedMovie(null)} />
+    <MovieView movie={selectedMovie} 
+    onBackClick={() => setSelectedMovie(null)} />
    ); 
   }
 
@@ -56,6 +81,17 @@ export const MainView = () => {
         }}
       />  
     ))}
+
+<button
+        onClick={() => {
+          setUser(null);
+          setToken(null);
+          localStorage.clear();
+        }}
+      >
+        Logout
+      </button>
+
   </div>
  ); 
   
