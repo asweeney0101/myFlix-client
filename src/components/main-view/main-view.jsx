@@ -5,28 +5,35 @@ import { LoginView } from "../login-view/login-view";
 import { SignupView } from "../signup-view/signup-view";
 
 export const MainView = () => {
-   const storedUser = JSON.parse(localStorage.getItem("user"));
+   const storedUserData = localStorage.getItem("user");
+   const storedUser = (storedUserData && storedUserData !== "undefined") ? JSON.parse(storedUserData) : null;
    const storedToken = localStorage.getItem("token");
    const [user, setUser] = useState(storedUser? storedUser : null);
    const [token, setToken] = useState(storedToken? storedToken : null);
    const [movies, setMovies] = useState([]);
    const [selectedMovie, setSelectedMovie] = useState(null);
+   const [view, setView] = useState("login");
    
 
    if (!user) {
     return (
-      <>
-        <LoginView
-          onLoggedIn={(user, token) => {
-            setUser(user);
-            setToken(token);
-          }}
-        />
-        or
-        <SignupView />
-      </>
+      <div>
+        {view === "login" ? (
+          <LoginView
+            onLoggedIn={(user, token) => {
+              setUser(user);
+              setToken(token);
+            }}
+          />
+        ) : (
+          <SignupView onSignUp={() => setView("login")} />
+        )}
+        <button onClick={() => setView("signup")}>Sign Up</button>
+        <button onClick={() => setView("login")}>Log In</button>
+      </div>
     );
   }
+
 
    useEffect(() => {
      if (!token) return;

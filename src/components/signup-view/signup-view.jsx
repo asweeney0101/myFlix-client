@@ -1,6 +1,6 @@
 import{ useState } from "react";
 
-export const SignupView = () => {
+export const SignupView = ({ onSignUp }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
@@ -16,7 +16,7 @@ export const SignupView = () => {
       Birthday: birthday
     };
 
-    fetch("https://ajs-movie-api-598adfef849b.herokuapp.com/login", {
+    fetch("https://ajs-movie-api-598adfef849b.herokuapp.com/users", {
       method: "POST",
       body: JSON.stringify(data),
       headers: {
@@ -25,7 +25,7 @@ export const SignupView = () => {
        .then((response) => {
        if (response.ok) {
          alert("Signup successful");
-         window.location.reload();
+         onSignUp();
        } else {
         alert("Signup failed");
        }

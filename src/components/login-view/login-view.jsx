@@ -9,8 +9,8 @@ export const LoginView = ({ onLoggedIn }) => {
     event.preventDefault();
 
     const data = {
-      access: username,
-      secret: password
+      username: username,
+      password: password
     };
 
     fetch("https://ajs-movie-api-598adfef849b.herokuapp.com/login", {
@@ -34,30 +34,30 @@ export const LoginView = ({ onLoggedIn }) => {
         .catch((e) => {
           alert("Something went wrong");
         });
+  };
 
-        return (
-            <form onSubmit={handleSubmit}>
-              <label>
-                Username:
-                <input
-                  type="text"
-                  value={username}
-                  onChange={(e) => setUsername(e.target.value)}
-                  required
-                  minLength="8"
-                />
-              </label>
-              <label>
-                Password:
-                <input
-                  type="password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  required
-                />
-              </label>
-              <button type="submit">Submit</button>
-            </form>
-          );
-        };
- }
+  return (
+    <form onSubmit={handleSubmit}>
+      <label>
+        Username:
+        <input
+          type="text"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          required
+          minLength="8"
+        />
+      </label>
+      <label>
+        Password:
+        <input
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          required
+        />
+      </label>
+      <button type="submit">Submit</button>
+    </form>
+  );
+};
