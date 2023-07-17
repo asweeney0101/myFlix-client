@@ -15,28 +15,8 @@ export const MainView = () => {
    const [view, setView] = useState("login");
    
 
-   if (!user) {
-    return (
-      <div>
-        {view === "login" ? (
-          <LoginView
-            onLoggedIn={(user, token) => {
-              setUser(user);
-              setToken(token);
-            }}
-          />
-        ) : (
-          <SignupView onSignUp={() => setView("login")} />
-        )}
-        <button onClick={() => setView("signup")}>Sign Up</button>
-        <button onClick={() => setView("login")}>Log In</button>
-      </div>
-    );
-  }
-
-
    useEffect(() => {
-     if (!token) return;
+    
 
     fetch("https://ajs-movie-api-598adfef849b.herokuapp.com/movies", {
       headers: { Authorization: `Bearer ${token}` }
@@ -66,7 +46,31 @@ export const MainView = () => {
       });
 
 
-  }, [token]);
+  }, [] );
+
+
+
+   if (!user) {
+    return (
+      <div>
+        {view === "login" ? (
+          <LoginView
+            onLoggedIn={(user, token) => {
+              setUser(user);
+              setToken(token);
+            }}
+          />
+        ) : (
+          <SignupView onSignUp={() => setView("login")} />
+        )}
+        <button onClick={() => setView("signup")}>Sign Up</button>
+        <button onClick={() => setView("login")}>Log In</button>
+      </div>
+    );
+  }
+
+
+   
 
 
 
