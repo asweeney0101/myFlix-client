@@ -1,14 +1,17 @@
 import{ useState } from "react";
-import { Button, Form, PageHeader } from "react-bootstrap";
+import { Button, Form } from "react-bootstrap";
 
 export const SignupView = ({ onSignUp }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [passwordError, setPasswordError] = useState("");
   const [email, setEmail] = useState("");
   const [birthday, setBirthday] = useState("");
 
   const handleSubmit = (event) => {
     event.preventDefault();
+
 
     const data = {
       Username: username,
@@ -50,14 +53,33 @@ export const SignupView = ({ onSignUp }) => {
       </Form.Group>
 
       <Form.Group controlId="formPassword">
-        <Form.Label>Password:</Form.Label>
+    <Form.Label>Password:</Form.Label>
+    <Form.Control
+        type="password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        required
+        minLength="6"
+      />
+    </Form.Group>
+
+    <Form.Group controlId="formConfirmPassword">
+        <Form.Label>Confirm Password:</Form.Label>
         <Form.Control
           type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          value={confirmPassword}
+          onChange={(e) => setConfirmPassword(e.target.value)}
+          onBlur={(e) => {
+            if(password !== confirmPassword){
+              setPasswordError("Passwords do not match");
+            } else {
+              setPasswordError('');
+            }
+          }}
           required
           minLength="6"
         />
+        {passwordError && <div style={{color: 'red'}}>{passwordError}</div>}
       </Form.Group>
 
       <Form.Group>
