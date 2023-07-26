@@ -1,13 +1,17 @@
 import{ useState } from "react";
+import { Button, Form } from "react-bootstrap";
 
 export const SignupView = ({ onSignUp }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [passwordError, setPasswordError] = useState("");
   const [email, setEmail] = useState("");
   const [birthday, setBirthday] = useState("");
 
   const handleSubmit = (event) => {
     event.preventDefault();
+
 
     const data = {
       Username: username,
@@ -33,45 +37,72 @@ export const SignupView = ({ onSignUp }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        Username:
-        <input
+  
+    
+    <Form onSubmit={handleSubmit} >
+     
+      <Form.Group controlId="formPassword">
+        <Form.Label>Username:</Form.Label>
+        <Form.Control
           type="text"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
           required
-          minLength="4"
+          minLength="5"
         />
-      </label>
-      <label>
-        Password:
-        <input
+      </Form.Group>
+
+      <Form.Group controlId="formPassword">
+    <Form.Label>Password:</Form.Label>
+    <Form.Control
+        type="password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        required
+        minLength="6"
+      />
+    </Form.Group>
+
+    <Form.Group controlId="formConfirmPassword">
+        <Form.Label>Confirm Password:</Form.Label>
+        <Form.Control
           type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          value={confirmPassword}
+          onChange={(e) => setConfirmPassword(e.target.value)}
+          onBlur={(e) => {
+            if(password !== confirmPassword){
+              setPasswordError("Passwords do not match");
+            } else {
+              setPasswordError('');
+            }
+          }}
           required
           minLength="6"
         />
-      </label>
-      <label>
-        Email:
-        <input
+        {passwordError && <div style={{color: 'red'}}>{passwordError}</div>}
+      </Form.Group>
+
+      <Form.Group>
+        <Form.Label>Email:</Form.Label>
+        <Form.Control
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
         />
-      </label>
-      <label>
-        Birthday:
-        <input
+      </Form.Group>
+
+      <Form.Group>
+        <Form.Label>Birthday:</Form.Label>
+        <Form.Control
           type="date"
           value={birthday}
           onChange={(e) => setBirthday(e.target.value)}
+          required
         />
-      </label>
-      <button type="submit">Submit</button>
-    </form>
+      </Form.Group>
+      <Button type="submit" style={{ marginTop: '35px' }}>Submit</Button>
+    </Form>
+   
   );
 };
