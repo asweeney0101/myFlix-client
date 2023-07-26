@@ -69,7 +69,7 @@ export const SignupView = ({ onSignUp }) => {
           type="password"
           value={confirmPassword}
           onChange={(e) => setConfirmPassword(e.target.value)}
-          onBlur={(e) => {
+          onBlur={() => {
             if(password !== confirmPassword){
               setPasswordError("Passwords do not match");
             } else {

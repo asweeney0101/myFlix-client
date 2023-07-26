@@ -17,6 +17,7 @@ export const MainView = () => {
    
 
    useEffect(() => {
+    if (token) {
     fetch("https://ajs-movie-api-598adfef849b.herokuapp.com/movies", {
       headers: { Authorization: `Bearer ${token}` }
     })
@@ -27,7 +28,6 @@ export const MainView = () => {
         return response.json();
       })
       .then((data) => {
-        console.log(data);
         const moviesFromAPI = data.map((movie) => {
           console.log('Movie:', movie);  
           return {
@@ -45,7 +45,8 @@ export const MainView = () => {
       .catch((error) => {
         console.error("Error fetching movies:", error);
       });
-  }, []);
+    }
+  }, [token]);
 
 
 
