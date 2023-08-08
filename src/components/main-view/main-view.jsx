@@ -3,7 +3,8 @@ import { useEffect, useState } from "react";
 
 
 import { IndexView } from "../index-view/index-view.jsx";
-import { MovieList } from "../movie-list/movie-list.jsx"
+import { MovieList } from "../movie-list/movie-list.jsx";
+import { MovieView } from "../movie-view/movie-view.jsx"
 import { Container, Row, Col, Button } from "react-bootstrap";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
@@ -62,11 +63,9 @@ export const MainView = () => {
        path="/"
        element={ <IndexView 
         setView = {setView}
-        view = {view}
-       >  </IndexView>}
-       >
-       
-       </Route>
+        view = {view} 
+        /> 
+        } />
 
        <Route
        path="/movies"
@@ -75,29 +74,20 @@ export const MainView = () => {
         setSelectedMovie = {setSelectedMovie}
         setToken = {setToken}
         setUser = {setUser}
-        >  </MovieList>
-       }>
+        /> 
+       } />
        
-       </Route>
+       
+
+       <Route
+        path="/movies/:movieID"
+        element={
+          <MovieView movies={movies} />} 
+       />
 
       </Routes>
       </BrowserRouter>
     );
-  // }
-
-  
-
-
-//  if (selectedMovie) {
-//   return (
-//     <Col md={8} style={{ }}>
-//       <MovieView movie={selectedMovie} 
-//       onBackClick={() => setSelectedMovie(null)} />
-//     </Col>
-//       ); 
-//   }
-
-  
   
 };
 
