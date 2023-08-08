@@ -1,9 +1,11 @@
 import { useState } from "react";
+import { LoginView } from "../login-view/login-view";
+import { SignupView } from "../signup-view/signup-view";
 
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Button } from "react-bootstrap";
 
 
-export const IndexView = ({ }) => {
+export const IndexView = ({ setView, view,  }) => {
  
 
   return (

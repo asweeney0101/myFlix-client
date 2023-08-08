@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { MovieCard } from "../movie-card/movie-card.jsx";
 import { MovieView } from "../movie-view/movie-view.jsx";
-import { LoginView } from "../login-view/login-view";
-import { SignupView } from "../signup-view/signup-view";
+
 import { IndexView } from "../index-view/index-view.jsx";
+import { MovieList } from "../movie-list/movie-list.jsx"
 import { Container, Row, Col, Button } from "react-bootstrap";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
@@ -52,67 +52,46 @@ export const MainView = () => {
 
 
 
-  if (!user) {
+  // if (!user) {
     return (
 
       <BrowserRouter>
       <Routes>
+
        <Route 
        path="/"
+       element={ <IndexView 
+        setView = {setView}
+        view = {view}
+       >  </IndexView>}
        >
-        <IndexView>
-
-        </IndexView>
+       
        </Route>
+
+       {/* <Route
+       path="/movies">
+        <MovieList movies={movies}>  </MovieList>
+       </Route> */}
 
       </Routes>
       </BrowserRouter>
     );
-  }
+  // }
 
   
 
 
- if (selectedMovie) {
-  return (
-    <Col md={8} style={{ }}>
-      <MovieView movie={selectedMovie} 
-      onBackClick={() => setSelectedMovie(null)} />
-    </Col>
-      ); 
-  }
+//  if (selectedMovie) {
+//   return (
+//     <Col md={8} style={{ }}>
+//       <MovieView movie={selectedMovie} 
+//       onBackClick={() => setSelectedMovie(null)} />
+//     </Col>
+//       ); 
+//   }
 
-  return (
-    <>
-      <Row className="justify-content-md-center">
-        {movies.map((movie) => (
-          <Col key={movie.id} xs={12} sm={6} md={4} lg={3} className="mb-4">
-            <MovieCard
-              movie={movie}
-              onMovieClick={(newSelectedMovie) => {
-                setSelectedMovie(newSelectedMovie);
-              }}
-            />  
-          </Col>
-        ))}
-      </Row>
-      
-      <Row className="justify-content-md-center">
-        <Button 
-          style={{maxWidth: '300px'}}
-            onClick={() => {
-              setUser(null);
-              setToken(null);
-              localStorage.clear();
-            }}
-          >
-            Logout
-        </Button>
-      </Row>
-    </>
-  );
   
-
+  
 };
 
 
