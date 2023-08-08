@@ -1,9 +1,11 @@
 import { useState } from "react";
+import { MovieCard } from "../movie-card/movie-card.jsx";
+import { MovieView } from "../movie-view/movie-view.jsx";
 
 import { Container, Row, Col, Button } from "react-bootstrap";
 
 
-export const MoviesList = ({ Movies }) => {
+export const MovieList = ({ movies }) => {
  
 
   return (
