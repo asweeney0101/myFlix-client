@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { MovieCard } from "../movie-card/movie-card.jsx";
-import { MovieView } from "../movie-view/movie-view.jsx";
+
+
 
 import { IndexView } from "../index-view/index-view.jsx";
 import { MovieList } from "../movie-list/movie-list.jsx"
@@ -68,10 +68,17 @@ export const MainView = () => {
        
        </Route>
 
-       {/* <Route
-       path="/movies">
-        <MovieList movies={movies}>  </MovieList>
-       </Route> */}
+       <Route
+       path="/movies"
+       element={
+        <MovieList movies={movies}
+        setSelectedMovie = {setSelectedMovie}
+        setToken = {setToken}
+        setUser = {setUser}
+        >  </MovieList>
+       }>
+       
+       </Route>
 
       </Routes>
       </BrowserRouter>
