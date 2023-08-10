@@ -27124,7 +27124,6 @@ var _react = require("react");
 var _indexViewJsx = require("../index-view/index-view.jsx");
 var _movieListJsx = require("../movie-list/movie-list.jsx");
 var _movieViewJsx = require("../movie-view/movie-view.jsx");
-var _reactBootstrap = require("react-bootstrap");
 var _reactRouterDom = require("react-router-dom");
 var _s = $RefreshSig$();
 const MainView = ()=>{
@@ -27132,7 +27131,7 @@ const MainView = ()=>{
     const storedUserData = localStorage.getItem("user");
     const storedUser = storedUserData && storedUserData !== "undefined" ? JSON.parse(storedUserData) : null;
     const storedToken = localStorage.getItem("token");
-    const [user, setUser] = (0, _react.useState)(storedUser ? storedUser : null);
+    const [setUser] = (0, _react.useState)(storedUser ? storedUser : null);
     const [token, setToken] = (0, _react.useState)(storedToken ? storedToken : null);
     const [movies, setMovies] = (0, _react.useState)([]);
     const [selectedMovie, setSelectedMovie] = (0, _react.useState)(null);
@@ -27164,7 +27163,6 @@ const MainView = ()=>{
     }, [
         token
     ]);
-    // if (!user) {
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.BrowserRouter), {
         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Routes), {
             children: [
@@ -27176,7 +27174,7 @@ const MainView = ()=>{
                     }, void 0, false, void 0, void 0)
                 }, void 0, false, {
                     fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 60,
+                    lineNumber: 59,
                     columnNumber: 8
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
@@ -27189,7 +27187,7 @@ const MainView = ()=>{
                     }, void 0, false, void 0, void 0)
                 }, void 0, false, {
                     fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 68,
+                    lineNumber: 67,
                     columnNumber: 8
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
@@ -27199,22 +27197,22 @@ const MainView = ()=>{
                     }, void 0, false, void 0, void 0)
                 }, void 0, false, {
                     fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 80,
+                    lineNumber: 79,
                     columnNumber: 8
                 }, undefined)
             ]
         }, void 0, true, {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 58,
+            lineNumber: 57,
             columnNumber: 7
         }, undefined)
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 57,
+        lineNumber: 56,
         columnNumber: 7
     }, undefined);
 };
-_s(MainView, "1kQIDMPj24AQ2ZozH85FvNCbDuI=");
+_s(MainView, "DncppaUJTPmlS+qM76Dn7ZoOof8=");
 _c = MainView;
 var _c;
 $RefreshReg$(_c, "MainView");
@@ -27224,7 +27222,7 @@ $RefreshReg$(_c, "MainView");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","../movie-view/movie-view.jsx":"ggaUx","@parcel/transformer-js/src/esmodule-helpers.js":"ihpbO","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"1QBWg","react-bootstrap":"3AD9A","../index-view/index-view.jsx":"aXs0X","../movie-list/movie-list.jsx":"5kraV","react-router-dom":"fdOAw"}],"ggaUx":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","../movie-view/movie-view.jsx":"ggaUx","@parcel/transformer-js/src/esmodule-helpers.js":"ihpbO","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"1QBWg","../index-view/index-view.jsx":"aXs0X","../movie-list/movie-list.jsx":"5kraV","react-router-dom":"fdOAw"}],"ggaUx":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$e9f6 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
