@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react";
 
-
-
 import { IndexView } from "../index-view/index-view.jsx";
 import { MovieList } from "../movie-list/movie-list.jsx";
 import { MovieView } from "../movie-view/movie-view.jsx"
@@ -32,7 +30,7 @@ export const MainView = () => {
       })
       .then((data) => {
         const moviesFromAPI = data.map((movie) => {
-          console.log('Movie:', movie);  
+           
           return {
             id: movie._id,
             Title: movie.Title,

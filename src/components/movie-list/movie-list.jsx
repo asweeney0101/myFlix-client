@@ -2,7 +2,7 @@
 import { MovieCard } from "../movie-card/movie-card.jsx";
 import { Row, Col, Button } from "react-bootstrap";
 
-export const MovieList = ({ movies }) => {
+export const MovieList = ({ movies, setSelectedMovie }) => {
  
   return (
    
