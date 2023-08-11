@@ -9,10 +9,10 @@ export const MainView = () => {
    const storedUserData = localStorage.getItem("user");
    const storedUser = (storedUserData && storedUserData !== "undefined") ? JSON.parse(storedUserData) : null;
    const storedToken = localStorage.getItem("token");
-   const [setUser] = useState(storedUser? storedUser : null);
+   const [user, setUser] = useState(storedUser? storedUser : null);
    const [token, setToken] = useState(storedToken? storedToken : null);
    const [movies, setMovies] = useState([]);
-   const [selectedMovie, setSelectedMovie] = useState(null);
+
    const [view, setView] = useState("login");
    
 
@@ -68,7 +68,6 @@ export const MainView = () => {
        path="/movies"
        element={
         <MovieList movies={movies}
-        setSelectedMovie = {setSelectedMovie}
         setToken = {setToken}
         setUser = {setUser}
         /> 

@@ -27131,10 +27131,9 @@ const MainView = ()=>{
     const storedUserData = localStorage.getItem("user");
     const storedUser = storedUserData && storedUserData !== "undefined" ? JSON.parse(storedUserData) : null;
     const storedToken = localStorage.getItem("token");
-    const [setUser] = (0, _react.useState)(storedUser ? storedUser : null);
+    const [user, setUser] = (0, _react.useState)(storedUser ? storedUser : null);
     const [token, setToken] = (0, _react.useState)(storedToken ? storedToken : null);
     const [movies, setMovies] = (0, _react.useState)([]);
-    const [selectedMovie, setSelectedMovie] = (0, _react.useState)(null);
     const [view, setView] = (0, _react.useState)("login");
     (0, _react.useEffect)(()=>{
         if (token) fetch("https://ajs-movie-api-598adfef849b.herokuapp.com/movies", {
@@ -27181,7 +27180,6 @@ const MainView = ()=>{
                     path: "/movies",
                     element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieListJsx.MovieList), {
                         movies: movies,
-                        setSelectedMovie: setSelectedMovie,
                         setToken: setToken,
                         setUser: setUser
                     }, void 0, false, void 0, void 0)
@@ -27197,7 +27195,7 @@ const MainView = ()=>{
                     }, void 0, false, void 0, void 0)
                 }, void 0, false, {
                     fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 79,
+                    lineNumber: 78,
                     columnNumber: 8
                 }, undefined)
             ]
@@ -27212,7 +27210,7 @@ const MainView = ()=>{
         columnNumber: 7
     }, undefined);
 };
-_s(MainView, "DncppaUJTPmlS+qM76Dn7ZoOof8=");
+_s(MainView, "m6qgWjCXPaq4mVqJVly1DKIp2EU=");
 _c = MainView;
 var _c;
 $RefreshReg$(_c, "MainView");
@@ -27242,8 +27240,7 @@ var _s = $RefreshSig$();
 const MovieView = ({ movies })=>{
     _s();
     const { movieID } = (0, _reactRouter.useParams)();
-    const [movie, setMovie] = (0, _react.useState)(movies.find((m)=>m.id === movieID));
-    console.log(movie);
+    const [movie] = (0, _react.useState)(movies.find((m)=>m.id === movieID));
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Col), {
         md: 8,
         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Row), {
@@ -27362,7 +27359,7 @@ const MovieView = ({ movies })=>{
         columnNumber: 7
     }, undefined);
 };
-_s(MovieView, "5YBxpDmhgg8qlXHVLSjEdrG0Pmg=", false, function() {
+_s(MovieView, "l1ZH3Jc7itjQl3FvVzkbcwQ836Q=", false, function() {
     return [
         (0, _reactRouter.useParams)
     ];
@@ -43028,7 +43025,7 @@ parcelHelpers.export(exports, "MovieList", ()=>MovieList);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _movieCardJsx = require("../movie-card/movie-card.jsx");
 var _reactBootstrap = require("react-bootstrap");
-const MovieList = ({ movies, setSelectedMovie })=>{
+const MovieList = ({ movies })=>{
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Row), {
@@ -43040,23 +43037,20 @@ const MovieList = ({ movies, setSelectedMovie })=>{
                         lg: 3,
                         className: "mb-4",
                         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieCardJsx.MovieCard), {
-                            movie: movie,
-                            onMovieClick: (newSelectedMovie)=>{
-                                setSelectedMovie(newSelectedMovie);
-                            }
+                            movie: movie
                         }, void 0, false, {
                             fileName: "src/components/movie-list/movie-list.jsx",
-                            lineNumber: 14,
+                            lineNumber: 16,
                             columnNumber: 11
                         }, undefined)
                     }, movie.id, false, {
                         fileName: "src/components/movie-list/movie-list.jsx",
-                        lineNumber: 13,
+                        lineNumber: 14,
                         columnNumber: 9
                     }, undefined))
             }, void 0, false, {
                 fileName: "src/components/movie-list/movie-list.jsx",
-                lineNumber: 11,
+                lineNumber: 12,
                 columnNumber: 5
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Row), {
@@ -43073,12 +43067,12 @@ const MovieList = ({ movies, setSelectedMovie })=>{
                     children: "Logout"
                 }, void 0, false, {
                     fileName: "src/components/movie-list/movie-list.jsx",
-                    lineNumber: 25,
+                    lineNumber: 24,
                     columnNumber: 7
                 }, undefined)
             }, void 0, false, {
                 fileName: "src/components/movie-list/movie-list.jsx",
-                lineNumber: 24,
+                lineNumber: 23,
                 columnNumber: 5
             }, undefined)
         ]
@@ -43108,7 +43102,7 @@ var _propTypes = require("prop-types");
 var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
 var _reactBootstrap = require("react-bootstrap");
 var _reactRouterDom = require("react-router-dom");
-const MovieCard = ({ movie, onMovieClick })=>{
+const MovieCard = ({ movie })=>{
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Link), {
         to: `/movies/${encodeURIComponent(movie.id)}`,
         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card), {
@@ -43116,7 +43110,6 @@ const MovieCard = ({ movie, onMovieClick })=>{
             style: {
                 cursor: "pointer"
             },
-            onClick: ()=>onMovieClick(movie),
             children: [
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card).Img, {
                     variant: "top",
@@ -43124,7 +43117,7 @@ const MovieCard = ({ movie, onMovieClick })=>{
                 }, void 0, false, {
                     fileName: "src/components/movie-card/movie-card.jsx",
                     lineNumber: 9,
-                    columnNumber: 7
+                    columnNumber: 9
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card).Body, {
                     children: [
@@ -43132,27 +43125,27 @@ const MovieCard = ({ movie, onMovieClick })=>{
                             children: movie.Title
                         }, void 0, false, {
                             fileName: "src/components/movie-card/movie-card.jsx",
-                            lineNumber: 12,
-                            columnNumber: 9
+                            lineNumber: 11,
+                            columnNumber: 13
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card).Text, {
                             children: movie.Director
                         }, void 0, false, {
                             fileName: "src/components/movie-card/movie-card.jsx",
-                            lineNumber: 13,
-                            columnNumber: 9
+                            lineNumber: 12,
+                            columnNumber: 13
                         }, undefined)
                     ]
                 }, void 0, true, {
                     fileName: "src/components/movie-card/movie-card.jsx",
-                    lineNumber: 11,
-                    columnNumber: 7
+                    lineNumber: 10,
+                    columnNumber: 11
                 }, undefined)
             ]
         }, void 0, true, {
             fileName: "src/components/movie-card/movie-card.jsx",
             lineNumber: 8,
-            columnNumber: 5
+            columnNumber: 7
         }, undefined)
     }, void 0, false, {
         fileName: "src/components/movie-card/movie-card.jsx",
@@ -43166,8 +43159,7 @@ MovieCard.propTypes = {
         Title: (0, _propTypesDefault.default).string.isRequired,
         ImagePath: (0, _propTypesDefault.default).string.isRequired,
         Director: (0, _propTypesDefault.default).string
-    }).isRequired,
-    onMovieClick: (0, _propTypesDefault.default).func.isRequired
+    }).isRequired
 };
 var _c;
 $RefreshReg$(_c, "MovieCard");

@@ -2,7 +2,8 @@
 import { MovieCard } from "../movie-card/movie-card.jsx";
 import { Row, Col, Button } from "react-bootstrap";
 
-export const MovieList = ({ movies, setSelectedMovie }) => {
+
+export const MovieList = ({ movies }) => {
  
   return (
    
@@ -11,16 +12,14 @@ export const MovieList = ({ movies, setSelectedMovie }) => {
     <Row className="justify-content-md-center">
       {movies.map((movie) => (
         <Col key={movie.id} xs={12} sm={6} md={4} lg={3} className="mb-4">
-          <MovieCard
-            movie={movie}
-            onMovieClick={(newSelectedMovie) => {
-              setSelectedMovie(newSelectedMovie);
-            }}
-          />  
+          
+          <MovieCard movie={movie}/>  
+
         </Col>
       ))}
     </Row>
     
+
     <Row className="justify-content-md-center">
       <Button 
         style={{maxWidth: '300px'}}
@@ -32,7 +31,8 @@ export const MovieList = ({ movies, setSelectedMovie }) => {
         >
           Logout
       </Button>
-    </Row>
+    </Row>  
+  
   </>
 
 
