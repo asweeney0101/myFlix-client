@@ -27163,15 +27163,16 @@ const MainView = ()=>{
     }, [
         token
     ]);
+    console.log(location.href);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
         children: [
-            user ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _logoutButtonJsx.LogoutButton), {
+            user && location.href !== "http://localhost:8000/" ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _logoutButtonJsx.LogoutButton), {
                 setUser: setUser,
                 setToken: setToken
             }, void 0, false, {
                 fileName: "src/components/main-view/main-view.jsx",
                 lineNumber: 58,
-                columnNumber: 18
+                columnNumber: 64
             }, undefined) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
                 children: " "
             }, void 0, false),

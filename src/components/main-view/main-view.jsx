@@ -51,11 +51,11 @@ export const MainView = () => {
 
 
 
-
+console.log(location.href);
     return (
        <>
         
-        { user ? <LogoutButton 
+        { user && location.href !== "http://localhost:8000/" ? <LogoutButton 
            setUser = {setUser}
            setToken = {setToken}
          /> : <> </> } 
