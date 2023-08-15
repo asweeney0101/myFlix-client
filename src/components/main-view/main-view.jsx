@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { LogoutButton } from "../logout-button/logout-button.jsx";
 
 import { IndexView } from "../index-view/index-view.jsx";
 import { MovieList } from "../movie-list/movie-list.jsx";
@@ -52,24 +53,36 @@ export const MainView = () => {
 
 
     return (
+       <>
+        
+        { user ? <LogoutButton 
+           setUser = {setUser}
+           setToken = {setToken}
+         /> : <> </> } 
 
       <BrowserRouter>
       <Routes>
 
        <Route 
        path="/"
-       element={ <IndexView 
-        setView = {setView}
-        view = {view} 
+       element={ 
+        <IndexView 
+         setView = {setView}
+         view = {view}
+         setToken = {setToken}
+         setUser = {setUser} 
+        
+        
         /> 
         } />
 
        <Route
        path="/movies"
        element={
-        <MovieList movies={movies}
+        <MovieList movies={movies} 
         setToken = {setToken}
-        setUser = {setUser}
+        setUser = {setUser} 
+               
         /> 
        } />
        
@@ -82,9 +95,10 @@ export const MainView = () => {
        />
 
       </Routes>
+
+       
       </BrowserRouter>
+      </>
     );
   
 };
-
-
