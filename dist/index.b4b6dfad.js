@@ -27201,7 +27201,7 @@ const MainView = ()=>{
                             }, void 0, false, void 0, void 0)
                         }, void 0, false, {
                             fileName: "src/components/main-view/main-view.jsx",
-                            lineNumber: 79,
+                            lineNumber: 77,
                             columnNumber: 8
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
@@ -27211,7 +27211,7 @@ const MainView = ()=>{
                             }, void 0, false, void 0, void 0)
                         }, void 0, false, {
                             fileName: "src/components/main-view/main-view.jsx",
-                            lineNumber: 91,
+                            lineNumber: 87,
                             columnNumber: 8
                         }, undefined)
                     ]
@@ -42622,7 +42622,7 @@ const IndexView = ({ setView, view, setUser, setToken })=>{
                         children: "Log In"
                     }, void 0, false, {
                         fileName: "src/components/index-view/index-view.jsx",
-                        lineNumber: 19,
+                        lineNumber: 15,
                         columnNumber: 7
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Button), {
@@ -42634,13 +42634,13 @@ const IndexView = ({ setView, view, setUser, setToken })=>{
                         children: "Sign Up"
                     }, void 0, false, {
                         fileName: "src/components/index-view/index-view.jsx",
-                        lineNumber: 22,
+                        lineNumber: 18,
                         columnNumber: 7
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/index-view/index-view.jsx",
-                lineNumber: 18,
+                lineNumber: 14,
                 columnNumber: 5
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Row), {
@@ -42649,22 +42649,22 @@ const IndexView = ({ setView, view, setUser, setToken })=>{
                     onLoggedIn: (user, token)=>{
                         setUser(user);
                         setToken(token);
-                        setView("movies"); // set the view to movies upon login
+                        setView("movies");
                     }
                 }, void 0, false, {
                     fileName: "src/components/index-view/index-view.jsx",
-                    lineNumber: 29,
+                    lineNumber: 25,
                     columnNumber: 9
                 }, undefined) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _signupView.SignupView), {
                     onSignUp: ()=>setView("login")
                 }, void 0, false, {
                     fileName: "src/components/index-view/index-view.jsx",
-                    lineNumber: 37,
+                    lineNumber: 33,
                     columnNumber: 9
                 }, undefined)
             }, void 0, false, {
                 fileName: "src/components/index-view/index-view.jsx",
-                lineNumber: 27,
+                lineNumber: 23,
                 columnNumber: 5
             }, undefined)
         ]
@@ -43043,15 +43043,12 @@ parcelHelpers.export(exports, "MovieList", ()=>MovieList);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _movieCardJsx = require("../movie-card/movie-card.jsx");
 var _reactBootstrap = require("react-bootstrap");
-const MovieList = ({ movies, setUser, setToken })=>{
-    // const logout = () => {
-    //   setUser(null);
-    //   setToken(null);
-    //   localStorage.removeItem("user");
-    //   localStorage.removeItem("token");
-    //   location.replace('/');
-    // }
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
+const MovieList = ({ movies })=>{
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Container), {
+        style: {
+            padding: "20px",
+            marginTop: "20px"
+        },
         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Row), {
             className: "justify-content-md-center",
             children: movies.map((movie)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Col), {
@@ -43064,20 +43061,24 @@ const MovieList = ({ movies, setUser, setToken })=>{
                         movie: movie
                     }, void 0, false, {
                         fileName: "src/components/movie-list/movie-list.jsx",
-                        lineNumber: 27,
-                        columnNumber: 11
+                        lineNumber: 15,
+                        columnNumber: 13
                     }, undefined)
                 }, movie.id, false, {
                     fileName: "src/components/movie-list/movie-list.jsx",
-                    lineNumber: 25,
-                    columnNumber: 9
+                    lineNumber: 13,
+                    columnNumber: 11
                 }, undefined))
         }, void 0, false, {
             fileName: "src/components/movie-list/movie-list.jsx",
-            lineNumber: 23,
-            columnNumber: 5
+            lineNumber: 11,
+            columnNumber: 8
         }, undefined)
-    }, void 0, false);
+    }, void 0, false, {
+        fileName: "src/components/movie-list/movie-list.jsx",
+        lineNumber: 10,
+        columnNumber: 5
+    }, undefined);
 };
 _c = MovieList;
 var _c;
@@ -43196,8 +43197,8 @@ const LogoutButton = ({ setUser, setToken })=>{
             children: "Logout"
         }, void 0, false, {
             fileName: "src/components/logout-button/logout-button.jsx",
-            lineNumber: 20,
-            columnNumber: 5
+            lineNumber: 15,
+            columnNumber: 6
         }, undefined)
     }, void 0, false);
 };

@@ -4,7 +4,7 @@ import { LogoutButton } from "../logout-button/logout-button.jsx";
 import { IndexView } from "../index-view/index-view.jsx";
 import { MovieList } from "../movie-list/movie-list.jsx";
 import { MovieView } from "../movie-view/movie-view.jsx"
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 export const MainView = () => {
    const storedUserData = localStorage.getItem("user");
@@ -70,9 +70,7 @@ console.log(location.href);
          setView = {setView}
          view = {view}
          setToken = {setToken}
-         setUser = {setUser} 
-        
-        
+         setUser = {setUser}     
         /> 
         } />
 
@@ -81,11 +79,9 @@ console.log(location.href);
        element={
         <MovieList movies={movies} 
         setToken = {setToken}
-        setUser = {setUser} 
-               
+        setUser = {setUser}          
         /> 
        } />
-       
        
 
        <Route

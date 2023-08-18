@@ -11,10 +11,6 @@ export const IndexView = ({ setView, view, setUser, setToken }) => {
    
     <Container style={{ border: "1px solid black", padding: "20px", borderRadius: "5px", maxWidth: "750px" }}>
     
-     {/* <Row className="justify-content-md-center"> */}
-      
-    {/* </Row>  */}
-
     <Row className="justify-content-md-center mb-4" style={{ display: 'flex', flexDirection: 'row', padding: "10px" }}>
       <Button style={{ flex: 1 }} variant={view === "login" ? "primary" : "light"} onClick={() => setView("login")}>
         Log In
@@ -30,7 +26,7 @@ export const IndexView = ({ setView, view, setUser, setToken }) => {
           onLoggedIn={(user, token) => {
             setUser(user);
             setToken(token);
-            setView("movies");  // set the view to movies upon login
+            setView("movies"); 
           }}
         />
       ) : (

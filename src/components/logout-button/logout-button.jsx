@@ -1,8 +1,4 @@
-
-
 import { Button} from "react-bootstrap";
-
-
 
 export const LogoutButton = ({ setUser, setToken }) => {
  
@@ -15,16 +11,8 @@ export const LogoutButton = ({ setUser, setToken }) => {
   }
 
   return (
-   
-    <>
-    <Button onClick={logout}>Logout</Button>
-
-    
-
-    
-  
-  </>
-
-
+   <>
+     <Button onClick={logout}>Logout</Button>  
+   </>
   );
 };
