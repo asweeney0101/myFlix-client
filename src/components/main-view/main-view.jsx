@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import { LogoutButton } from "../logout-button/logout-button.jsx";
 
 import { IndexView } from "../index-view/index-view.jsx";
+import { NavBar } from "../nav-bar/nav-bar.jsx"
 import { MovieList } from "../movie-list/movie-list.jsx";
 import { MovieView } from "../movie-view/movie-view.jsx"
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 
 export const MainView = () => {
    const storedUserData = localStorage.getItem("user");
@@ -50,17 +50,16 @@ export const MainView = () => {
   }, [token]);
 
 
-
-console.log(location.href);
     return (
        <>
         
-        { user && location.href !== "http://localhost:8000/" ? <LogoutButton 
-           setUser = {setUser}
-           setToken = {setToken}
-         /> : <> </> } 
+        
+        { user && location.href !== "http://localhost:8000/" ? <NavBar
+        setUser = {setUser}
+        setToken = {setToken}
+         /> : <> </> }  
 
-      <BrowserRouter>
+     
       <Routes>
 
        <Route 
@@ -77,9 +76,7 @@ console.log(location.href);
        <Route
        path="/movies"
        element={
-        <MovieList movies={movies} 
-        setToken = {setToken}
-        setUser = {setUser}          
+        <MovieList movies={movies}       
         /> 
        } />
        
@@ -90,10 +87,16 @@ console.log(location.href);
           <MovieView movies={movies} />} 
        />
 
+       <Route
+        path="/profile/:"
+       
+       />
+
+
       </Routes>
 
        
-      </BrowserRouter>
+      
       </>
     );
   

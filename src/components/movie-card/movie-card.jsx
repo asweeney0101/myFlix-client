@@ -2,9 +2,10 @@ import PropTypes from "prop-types";
 import { Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
+
 export const MovieCard = ({ movie }) => {
   return (
-    <Link to={`/movies/${encodeURIComponent(movie.id)}`} >
+    <Link to={`/movies/${encodeURIComponent(movie.id)}`} style={{ textDecoration: "none", color: "black" }}>
       <Card className="h-100" style={{ cursor: "pointer"}} >
         <Card.Img variant="top" src={movie.ImagePath} />
           <Card.Body>
