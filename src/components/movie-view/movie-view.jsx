@@ -1,13 +1,16 @@
-import { Button, Row, Col } from "react-bootstrap";
+import { Row, Col } from "react-bootstrap";
 import { useParams } from "react-router";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./movie-view.scss";
 import { useState } from "react";
 
 export const MovieView = ({ movies }) => {
   const { movieID } = useParams();
   const [movie] = useState(movies.find((m) => m.id === movieID));
-
+  const navigate = useNavigate();
+  const goBack = () => {
+    navigate(-1);
+  }
 
     return (
       <Col md={8}>
@@ -28,9 +31,9 @@ export const MovieView = ({ movies }) => {
             <span>Description: {movie.Description}</span>
           </Row>
           <Row> 
-              <Link to={`/movies`}>
-        <Button className="back-button">Back</Button>
-      </Link>
+              
+        <button className="back-button" onClick={goBack}>Back</button>
+     
           </Row>
         </Row>
         </Col>

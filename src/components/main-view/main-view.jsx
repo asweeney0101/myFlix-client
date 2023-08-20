@@ -3,7 +3,8 @@ import { useEffect, useState } from "react";
 import { IndexView } from "../index-view/index-view.jsx";
 import { NavBar } from "../nav-bar/nav-bar.jsx"
 import { MovieList } from "../movie-list/movie-list.jsx";
-import { MovieView } from "../movie-view/movie-view.jsx"
+import { MovieView } from "../movie-view/movie-view.jsx";
+import { ProfileView } from "../profile-view/profile-view.jsx";
 import { Routes, Route } from "react-router-dom";
 
 export const MainView = () => {
@@ -71,25 +72,28 @@ export const MainView = () => {
          setToken = {setToken}
          setUser = {setUser}     
         /> 
-        } />
+        }/>
 
        <Route
        path="/movies"
        element={
-        <MovieList movies={movies}       
-        /> 
-       } />
+        <MovieList movies={movies} /> 
+       }/>
        
 
        <Route
         path="/movies/:movieID"
         element={
-          <MovieView movies={movies} />} 
+          <MovieView movies = {movies} />} 
        />
 
        <Route
-        path="/profile/:"
-       
+        path="/profile"
+       element={
+          <ProfileView 
+          user={user}
+          movies={movies}
+          />}
        />
 
 

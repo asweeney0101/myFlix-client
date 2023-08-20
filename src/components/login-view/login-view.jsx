@@ -23,12 +23,12 @@ export const LoginView = ({ onLoggedIn }) => {
         body: JSON.stringify(data)
       })
         .then((response) => response.json())
-        .then((data) => {
+        .then((res) => {
           console.log("Login response: ", data);
-          if (data.user) {
-            localStorage.setItem("user", JSON.stringify(data.user));
-            localStorage.setItem("token", data.token);
-            onLoggedIn(data.user, data.token);
+          if (res.user) {
+            localStorage.setItem("user", JSON.stringify(res.user));
+            localStorage.setItem("token", res.token);
+            onLoggedIn(res.user, res.token);
             location.replace("/movies");
           } else {
             alert("No such user");

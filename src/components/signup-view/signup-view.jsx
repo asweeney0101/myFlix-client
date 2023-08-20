@@ -26,8 +26,8 @@ export const SignupView = ({ onSignUp }) => {
       headers: {
         "Content-Type": "application/json"
       }})
-       .then((response) => {
-       if (response.ok) {
+       .then((res) => {
+       if (res.ok) {
          alert("Signup successful");
          onSignUp();
        } else {

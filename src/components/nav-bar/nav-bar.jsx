@@ -18,7 +18,7 @@ export const NavBar = ({ setUser, setToken }) => {
           <Navbar.Brand href="/movies">MyFlix</Navbar.Brand>
           <Nav className="fs-4">
             <Nav.Link href="/movies" >Movies</Nav.Link>
-            <Nav.Link href="#features">My Profile</Nav.Link>
+            <Nav.Link href="/profile">My Profile</Nav.Link>
             <Nav.Link onClick={logout}>Log Out</Nav.Link>
             
           </Nav>
