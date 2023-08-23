@@ -1,6 +1,21 @@
-.navbar { 
-  
+.navigationbar { 
+    display: flex;
     background-color: rgb(180, 180, 234);
-  
+    padding: 10px;
+    text-decoration: none;
+    color: black;
 }
 
+.navigationbar a { 
+    text-decoration: none;
+    color: inherit; 
+}
+
+.navigationbar {
+    cursor: pointer;
+}
+
+.navigationbar h2:hover{
+    color: rgb(5,99,193);
+    transition: .2s ease-out;
+}

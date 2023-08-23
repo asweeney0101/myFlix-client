@@ -1,0 +1,10 @@
+.movieCard{
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
+}
+
+.movieCard:hover{
+    opacity: .7;
+    transition: opacity .2s ease-out;
+}

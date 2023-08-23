@@ -1,4 +1,5 @@
-import { Container, Nav, Navbar } from "react-bootstrap";
+import { Row, Col } from "react-bootstrap"
+import { Link } from "react-router-dom";
 import "./nav-bar.scss"
 
 export const NavBar = ({ setUser, setToken }) => {
@@ -12,19 +13,30 @@ export const NavBar = ({ setUser, setToken }) => {
       }
 
   return (
-    <>
-      <Navbar >
-        <Container>
-          <Navbar.Brand href="/movies">MyFlix</Navbar.Brand>
-          <Nav className="fs-4">
-            <Nav.Link href="/movies" >Movies</Nav.Link>
-            <Nav.Link href="/profile">My Profile</Nav.Link>
-            <Nav.Link onClick={logout}>Log Out</Nav.Link>
+   
+    
+        <Row className="navigationbar">
+          <Col>
+            <Link to="/movies"><h2>MyFlix</h2></Link>
+          </Col>
+
+          <Col>
+          <Link to="/movies" ><h2>Movies</h2></Link>
+          </Col>  
             
-          </Nav>
-        </Container>
-      </Navbar>
+          <Col>
+            <Link to="/profile"><h2>My Profile</h2></Link>
+          </Col>  
+
+          <Col>
+            <h2 onClick={logout}>Log Out</h2>
+          </Col>  
+            
+            
+         
+        </Row>
+     
       
-    </>
+    
   );
 };

@@ -31,7 +31,7 @@ export const LoginView = ({ onLoggedIn }) => {
             onLoggedIn(res.user, res.token);
             location.replace("/movies");
           } else {
-            alert("No such user");
+            alert("Please Check your Username or Password");
           }
         })
         .catch((e) => {
