@@ -1,9 +1,12 @@
+@import '../../styles';
+
 .navigationbar { 
     display: flex;
-    background-color: rgb(180, 180, 234);
+    background-color: $main-bg-color;
     padding: 10px;
     text-decoration: none;
-    color: black;
+    color: $main-text-color;
+    margin-bottom: 20px;
 }
 
 .navigationbar a { 
@@ -11,12 +14,12 @@
     color: inherit; 
 }
 
-.navigationbar {
+.navigationbar h2{
     cursor: pointer;
 }
 
 .navigationbar h2:hover{
-    color: rgb(5,99,193);
+    color: $hover-color;
     transition: color .2s ease-in-out;
     transform: scale(1.03);
     transition: transform .2s ease-in-out;

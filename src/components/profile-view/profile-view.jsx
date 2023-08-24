@@ -1,7 +1,10 @@
 import { useEffect, useState } from "react";
 import { Card, Button, Container, Row, Col, Modal, Form } from "react-bootstrap";
 // import { Link } from "react-router-dom";
+import "../movie-list/movie-list.scss"
+import { movieListBreakpoints } from "../movie-list/movie-list";
 import { MovieCard } from "../movie-card/movie-card.jsx";
+
 
 
 export const ProfileView  = ({ user, movies }) => {
@@ -100,7 +103,7 @@ export const ProfileView  = ({ user, movies }) => {
              <Row>
                  <h3>Favorite movies:</h3>
                  {favoriteMovies.map((movie) => (
-                   <Col key={movie.id} >
+                   <Col key={movie.id} {...movieListBreakpoints}>
                        <MovieCard movie={movie}/>
                    </Col>
                   ))}

@@ -1,6 +1,8 @@
+@import '../../styles';
+
 .movieCard{
     text-decoration: none;
-    color: black;
+    color: $main-text-color;
     cursor: pointer;
 }
 
