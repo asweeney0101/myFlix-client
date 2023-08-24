@@ -1,0 +1,11 @@
+.movieList {
+    padding: 20px;
+    margin-top: 20px;
+    .row {
+        justify-content: center;
+        
+        .col {
+            margin-bottom: 10px;
+        }
+    }
+}

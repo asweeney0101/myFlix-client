@@ -30,12 +30,12 @@ export const MovieView = ({ movies }) => {
           <Row>
             <span>Description: {movie.Description}</span>
           </Row>
-          <Row> 
-              
+                           
+        </Row> 
+
+
         <button className="back-button" onClick={goBack}>Back</button>
-     
-          </Row>
-        </Row>
+    
         </Col>
     );
 };

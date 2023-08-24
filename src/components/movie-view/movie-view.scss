@@ -1,9 +1,18 @@
 .back-button {
     padding: 4px 12px 4px 12px;
-    color: whitesmoke;
+    color: black;
     background-color: rgb(180, 180, 234);
     border: none;
     border-radius: 4px;
+    
+
   }
-  
  
+.back-button:hover{
+  color: rgb(5,99,193);
+  transition: color .2s ease-in-out;
+  transform: scale(1.05);
+  transition: transform .2s ease-in-out;
+ 
+}  
+
