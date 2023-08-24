@@ -3,9 +3,12 @@
     margin-top: 20px;
     .row {
         justify-content: center;
-        
         .col {
-            margin-bottom: 10px;
+            padding: 10px;
         }
     }
+}
+.movieList h3{
+    text-align: center;
+    margin-bottom: 2rem;
 }
