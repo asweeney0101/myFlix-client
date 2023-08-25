@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import { Card, Container, Row, Col, Modal, Form } from "react-bootstrap";
 // import { Link } from "react-router-dom";
-import "../movie-list/movie-list.scss"
 import { movieListBreakpoints } from "../movie-list/movie-list";
 import { MovieCard } from "../movie-card/movie-card.jsx";
 import "../../_styles.scss"
 import "./profile-view.scss"
+import "../movie-list/movie-list.scss"
 
 
 

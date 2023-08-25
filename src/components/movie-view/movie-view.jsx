@@ -15,13 +15,13 @@ export const MovieView = ({ movies }) => {
   }
 
     return (
-      <Col md={8}>
-        <Row style={{flex:1, padding: '10px'}}>
-           <Row>
-             <img style={{maxWidth: '400px'}} src={movie.ImagePath} />
+      <Col className="movieView" md={8}>
+        
+           <Row className="movieViewPoster">
+             <img  src={movie.ImagePath} />
            </Row>
            <Row> 
-             <span>{movie.Title}</span>
+             <h2><span>{movie.Title}</span></h2>
            </Row>
            <Row>
              <span>Director: {movie.Director}</span>
@@ -32,7 +32,7 @@ export const MovieView = ({ movies }) => {
            <Row>
              <span>Description: {movie.Description}</span>
            </Row>                
-        </Row> 
+         
         <button className="ajs-button" onClick={goBack}>Back</button>
     
         </Col>
