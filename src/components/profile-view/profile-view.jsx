@@ -9,7 +9,7 @@ import "../movie-list/movie-list.scss"
 
 
 
-export const ProfileView  = ({ user, movies, token }) => {
+export const ProfileView  = ({ user, movies, token, updateUser }) => {
 
     const [name, setName] = useState(user.Name)
     const [username, setUsername] = useState(user.Username);
@@ -24,21 +24,21 @@ export const ProfileView  = ({ user, movies, token }) => {
     const [show, setShow] = useState(false);
     const [deregister, setDeregister] = useState(false);
 
-    const data = {
-        Name: name,
-        Username: username,
-        Password: password,
-        Email: email,
-        Birthday: birthday
-    };
+    
 
-    handleShow = () => setShow(true);
-    handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+    const handleClose = () => setShow(false);
 
     
-    editUser = () => {
-
+    const editUser = () => {
         
+        const data = {
+            Name: name,
+            Username: username,
+            Password: password,
+            Email: email,
+            Birthday: birthday
+        };
 
         fetch("https://ajs-movie-api-598adfef849b.herokuapp.com/users/" + username, {
         method: "PUT",
@@ -54,17 +54,19 @@ export const ProfileView  = ({ user, movies, token }) => {
                 localStorage.setItem("user", JSON.stringify(res.username));
                 localStorage.setItem("userObject", JSON.stringify(res));
                 updateUser(res);
+                console.log(`log1 ${data}`);
                 alert("Your account is updated");
             }
             else {
                 alert("Update failed");
+                console.log(`log2 ${data}`);
             }
         });
 
     };
 
 
-    deleteUser = () => {
+    const deleteUser = () => {
       fetch("https://ajs-movie-api-598adfef849b.herokuapp.com/users/" + username, {
           method: "DELETE",
           headers: {
@@ -91,9 +93,13 @@ export const ProfileView  = ({ user, movies, token }) => {
  return (
    
   <>
-     <Container>
-         <Card>
-             <Card.Img src={"https://fakeimg.pl/200x200/cccccc/909090?text=Profile+Picture"} />
+     <Container className="profile-container">
+         <Card className="profile-card">
+           <Row noGutters>
+            <Col>
+             <Card.Img className="pfp" src={"https://fakeimg.pl/200x200/cccccc/909090?text=Profile+Picture"} />
+             </Col>
+             <Col>
              <Card.Body>
                 <Card.Title>My Profile</Card.Title>
                 <Card.Text>
@@ -104,6 +110,8 @@ export const ProfileView  = ({ user, movies, token }) => {
                 </Card.Text>
                 <button className="ajs-button" onClick={handleShow}>Edit Profile</button>
              </Card.Body>
+             </Col>
+             </Row>
          </Card>    
         
         
@@ -132,7 +140,6 @@ export const ProfileView  = ({ user, movies, token }) => {
                     type="text"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
-                    required
                 />
            </Form.Group>
 
@@ -142,7 +149,6 @@ export const ProfileView  = ({ user, movies, token }) => {
                     type="text"
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
-                    required
                     minLength="5"
                 />
            </Form.Group>
@@ -152,8 +158,7 @@ export const ProfileView  = ({ user, movies, token }) => {
                <Form.Control
                     type="password"
                     value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    required
+                    onChange={(e) => setPassword(e.target.value)}                    
                     minLength="6"
                 />
            </Form.Group>
@@ -182,7 +187,6 @@ export const ProfileView  = ({ user, movies, token }) => {
                     type="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    required
                  />
             </Form.Group>
 
@@ -191,8 +195,7 @@ export const ProfileView  = ({ user, movies, token }) => {
                 <Form.Control
                      type="date"
                      value={birthday}
-                     onChange={(e) => setBirthday(e.target.value)}
-                     required
+                     onChange={(e) => setBirthday(e.target.value)}                     
                 />
             </Form.Group>
             <button className="ajs-button" onClick={editUser} >Submit</button>

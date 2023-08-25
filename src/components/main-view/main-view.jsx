@@ -93,6 +93,8 @@ export const MainView = () => {
           <ProfileView 
           user={user}
           movies={movies}
+          token={token}
+          
           />}
        />
 
