@@ -11,7 +11,7 @@ import "../movie-list/movie-list.scss"
 
 export const ProfileView  = ({ user, movies, token, updateUser }) => {
 
-    const [name, setName] = useState(user.Name)
+    const [name, setName] = useState(user.Name);
     const [username, setUsername] = useState(user.Username);
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
@@ -31,37 +31,40 @@ export const ProfileView  = ({ user, movies, token, updateUser }) => {
 
     
     const editUser = () => {
-        
-        const data = {
-            Name: name,
-            Username: username,
-            Password: password,
-            Email: email,
-            Birthday: birthday
-        };
+        console.log("test");
+    //     const data = {
+    //         Name: name,
+    //         Username: username,
+    //         Password: password,
+    //         Email: email,
+    //         Birthday: birthday
+    //     };
 
-        fetch("https://ajs-movie-api-598adfef849b.herokuapp.com/users/" + username, {
-        method: "PUT",
-        body: JSON.stringify(data),
-        headers: {
-           "Content-Type": "application/json",
-           Authorization: `Bearer ${token}`
-         }
+    //     console.log(data);
+
+    //     fetch("https://ajs-movie-api-598adfef849b.herokuapp.com/users/" + username, {
+    //     method: "PUT",
+    //     body: JSON.stringify(data),
+    //     headers: {
+    //        "Content-Type": "application/json",
+    //        Authorization: `Bearer ${token}`
+    //      }
         
-     }).then((response) => response.json())
-        .then((res) => {
-            if (res.username) {
-                localStorage.setItem("user", JSON.stringify(res.username));
-                localStorage.setItem("userObject", JSON.stringify(res));
-                updateUser(res);
-                console.log(`log1 ${data}`);
-                alert("Your account is updated");
-            }
-            else {
-                alert("Update failed");
-                console.log(`log2 ${data}`);
-            }
-        });
+    //  }).then((response) => response.json())
+     
+    //     .then((res) => {
+    //         console.log(res);
+            
+    //             setName(res.Name);
+    //             setUsername(res.Username);
+    //             setPassword(res.Password);
+    //             setEmail(res.Email);
+    //             setBirthday(res.Birthday);
+
+                
+    //             alert("Your account is updated");
+           
+    //     });
 
     };
 
@@ -95,7 +98,7 @@ export const ProfileView  = ({ user, movies, token, updateUser }) => {
   <>
      <Container className="profile-container">
          <Card className="profile-card">
-           <Row noGutters>
+           <Row >
             <Col>
              <Card.Img className="pfp" src={"https://fakeimg.pl/200x200/cccccc/909090?text=Profile+Picture"} />
              </Col>
@@ -193,7 +196,7 @@ export const ProfileView  = ({ user, movies, token, updateUser }) => {
             <Form.Group controlId="formBirthday">
               <Form.Label>Birthday:</Form.Label>
                 <Form.Control
-                     type="date"
+                     type="text"
                      value={birthday}
                      onChange={(e) => setBirthday(e.target.value)}                     
                 />
