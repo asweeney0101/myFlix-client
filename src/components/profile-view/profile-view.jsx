@@ -30,41 +30,41 @@ export const ProfileView  = ({ user, movies, token, updateUser }) => {
     const handleClose = () => setShow(false);
 
     
-    const editUser = () => {
-        console.log("test");
-    //     const data = {
-    //         Name: name,
-    //         Username: username,
-    //         Password: password,
-    //         Email: email,
-    //         Birthday: birthday
-    //     };
-
-    //     console.log(data);
-
-    //     fetch("https://ajs-movie-api-598adfef849b.herokuapp.com/users/" + username, {
-    //     method: "PUT",
-    //     body: JSON.stringify(data),
-    //     headers: {
-    //        "Content-Type": "application/json",
-    //        Authorization: `Bearer ${token}`
-    //      }
+    function editUser() {
         
-    //  }).then((response) => response.json())
+        const data = {
+            Name: name,
+            Username: username,
+            Password: password,
+            Email: email,
+            Birthday: birthday
+        };
+
+        console.log(data);
+
+        fetch("https://ajs-movie-api-598adfef849b.herokuapp.com/users/" + username, {
+        method: "PUT",
+        body: JSON.stringify(data),
+        headers: {
+           "Content-Type": "application/json",
+           Authorization: `Bearer ${token}`
+         }
+        
+     }).then((response) => response.json())
      
-    //     .then((res) => {
-    //         console.log(res);
+        .then((res) => {
+            console.log(res);
             
-    //             setName(res.Name);
-    //             setUsername(res.Username);
-    //             setPassword(res.Password);
-    //             setEmail(res.Email);
-    //             setBirthday(res.Birthday);
+                setName(res.Name);
+                setUsername(res.Username);
+                setPassword(res.Password);
+                setEmail(res.Email);
+                setBirthday(res.Birthday);
 
                 
-    //             alert("Your account is updated");
+                alert("Your account is updated");
            
-    //     });
+        });
 
     };
 
@@ -201,7 +201,7 @@ export const ProfileView  = ({ user, movies, token, updateUser }) => {
                      onChange={(e) => setBirthday(e.target.value)}                     
                 />
             </Form.Group>
-            <button className="ajs-button" onClick={editUser} >Submit</button>
+            <button className="ajs-button" onClick={() => editUser()} >Submit</button>
             </Form>
         </Modal.Body>
      </Modal>

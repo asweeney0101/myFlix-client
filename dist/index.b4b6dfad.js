@@ -43361,34 +43361,32 @@ const ProfileView = ({ user, movies, token, updateUser })=>{
     const [deregister, setDeregister] = (0, _react.useState)(false);
     const handleShow = ()=>setShow(true);
     const handleClose = ()=>setShow(false);
-    const editUser = ()=>{
-        console.log("test");
-    //     const data = {
-    //         Name: name,
-    //         Username: username,
-    //         Password: password,
-    //         Email: email,
-    //         Birthday: birthday
-    //     };
-    //     console.log(data);
-    //     fetch("https://ajs-movie-api-598adfef849b.herokuapp.com/users/" + username, {
-    //     method: "PUT",
-    //     body: JSON.stringify(data),
-    //     headers: {
-    //        "Content-Type": "application/json",
-    //        Authorization: `Bearer ${token}`
-    //      }
-    //  }).then((response) => response.json())
-    //     .then((res) => {
-    //         console.log(res);
-    //             setName(res.Name);
-    //             setUsername(res.Username);
-    //             setPassword(res.Password);
-    //             setEmail(res.Email);
-    //             setBirthday(res.Birthday);
-    //             alert("Your account is updated");
-    //     });
-    };
+    function editUser() {
+        const data = {
+            Name: name,
+            Username: username,
+            Password: password,
+            Email: email,
+            Birthday: birthday
+        };
+        console.log(data);
+        fetch("https://ajs-movie-api-598adfef849b.herokuapp.com/users/" + username, {
+            method: "PUT",
+            body: JSON.stringify(data),
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`
+            }
+        }).then((response)=>response.json()).then((res)=>{
+            console.log(res);
+            setName(res.Name);
+            setUsername(res.Username);
+            setPassword(res.Password);
+            setEmail(res.Email);
+            setBirthday(res.Birthday);
+            alert("Your account is updated");
+        });
+    }
     const deleteUser = ()=>{
         fetch("https://ajs-movie-api-598adfef849b.herokuapp.com/users/" + username, {
             method: "DELETE",
@@ -43739,7 +43737,7 @@ const ProfileView = ({ user, movies, token, updateUser })=>{
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
                                     className: "ajs-button",
-                                    onClick: editUser,
+                                    onClick: ()=>editUser(),
                                     children: "Submit"
                                 }, void 0, false, {
                                     fileName: "src/components/profile-view/profile-view.jsx",
