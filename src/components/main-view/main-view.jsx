@@ -17,6 +17,10 @@ export const MainView = () => {
 
    const [view, setView] = useState("login");
    
+   const updateUser = (newUserData) => {
+    setUser(newUserData);
+    localStorage.setItem("user", JSON.stringify(newUserData)); 
+ };
 
    useEffect(() => {
     if (token) {
@@ -94,7 +98,7 @@ export const MainView = () => {
           user={user}
           movies={movies}
           token={token}
-          
+          updateUser={updateUser}
           />}
        />
 
