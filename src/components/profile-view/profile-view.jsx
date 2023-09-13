@@ -129,7 +129,18 @@ export const ProfileView  = ({ user, movies, token, updateUser }) => {
                 />
             <button onClick={editUser} >Submit</button>
 
-   
+
+            <div className="movieList">
+                <Row>
+                    <h3>Favorite movies:</h3>
+                    {favoriteMovies.map((movie) => (
+                    <Col key={movie.id} {...movieListBreakpoints} className="mb-4">
+                        <MovieCard movie={movie}/>
+                    </Col>
+                    ))}
+                </Row>
+            </div>
+
 
   </> 
  )
