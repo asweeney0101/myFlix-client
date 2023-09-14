@@ -19,7 +19,7 @@ export const MovieView = ({ movies }) => {
   const storedToken = localStorage.getItem("token");
   const [token, setToken] = useState(storedToken? storedToken : null);
 
-  // '/users/:Username/movies/:MovieID',
+
 
   function addToFavorites() {
     fetch("https://ajs-movie-api-598adfef849b.herokuapp.com/users/" + username + "/movies/" + movieID,  {
@@ -34,6 +34,21 @@ export const MovieView = ({ movies }) => {
         alert("Movie Added to Favorites");
     })
 }
+
+function removeFromFavorites() {
+  fetch("https://ajs-movie-api-598adfef849b.herokuapp.com/users/" + username + "/movies/" + movieID,  {
+  method: "DELETE",
+  headers: {
+     "Content-Type": "application/json",
+     Authorization: `Bearer ${token}`
+   }
+  })
+  .then((response) => response.json())
+  .then(() => {
+      alert("Movie Removed from Favorites");
+  })
+}
+
 
     return (
       <Col className="movieView" md={8}>
@@ -54,10 +69,14 @@ export const MovieView = ({ movies }) => {
              <span>Description: {movie.Description}</span>
            </Row>     
            <Row>
-            <button onClick={addToFavorites}>Add to Favorites</button>
+
+            <button className="ajs-button" onClick={addToFavorites}>Add to Favorites</button>
+            <button className="ajs-button" onClick={removeFromFavorites}>Remove From Favorites</button>
+            
             </Row>           
          
         <button className="ajs-button" onClick={goBack}>Back</button>
+
     
         </Col>
     );
