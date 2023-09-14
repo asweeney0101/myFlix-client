@@ -53,8 +53,18 @@ export const ProfileView  = ({ user, movies, token, updateUser }) => {
         .then((response) => response.json())
         .then((res) => {
             console.log(res);
-            
-                setName(res.Name);
+       
+            fetch("https://ajs-movie-api-598adfef849b.herokuapp.com/users/" + res.Username, {
+        method: "GET",
+        
+        headers: {
+           "Content-Type": "application/json",
+           Authorization: `Bearer ${token}`
+         }
+        })
+        .then((response) => response.json())
+        .then((res) => {
+            setName(res.Name);
                 setUsername(res.Username);
                 setPassword(res.Password);
                 setEmail(res.Email);
@@ -62,6 +72,9 @@ export const ProfileView  = ({ user, movies, token, updateUser }) => {
                 updateUser(res);
                 
                 alert("Your account is updated");
+        })
+
+                
            
         });
         return false;
