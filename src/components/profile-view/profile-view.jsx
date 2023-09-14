@@ -29,6 +29,9 @@ export const ProfileView  = ({ user, movies, token, updateUser }) => {
     const handleShow = () => setShow(true);
     const handleClose = () => setShow(false);
 
+
+   
+
     
     function editUser() {
         

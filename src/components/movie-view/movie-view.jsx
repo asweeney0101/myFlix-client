@@ -13,6 +13,27 @@ export const MovieView = ({ movies }) => {
   const goBack = () => {
     navigate(-1);
   }
+  const storedUserData = localStorage.getItem("user");
+  const storedUser = (storedUserData && storedUserData !== "undefined") ? JSON.parse(storedUserData) : null;
+  const username = storedUser.Username;
+  const storedToken = localStorage.getItem("token");
+  const [token, setToken] = useState(storedToken? storedToken : null);
+
+  // '/users/:Username/movies/:MovieID',
+
+  function addToFavorites() {
+    fetch("https://ajs-movie-api-598adfef849b.herokuapp.com/users/" + username + "/movies/" + movieID,  {
+    method: "POST",
+    headers: {
+       "Content-Type": "application/json",
+       Authorization: `Bearer ${token}`
+     }
+    })
+    .then((response) => response.json())
+    .then(() => {
+        alert("Movie Added to Favorites");
+    })
+}
 
     return (
       <Col className="movieView" md={8}>
@@ -31,7 +52,10 @@ export const MovieView = ({ movies }) => {
            </Row>
            <Row>
              <span>Description: {movie.Description}</span>
-           </Row>                
+           </Row>     
+           <Row>
+            <button onClick={addToFavorites}>Add to Favorites</button>
+            </Row>           
          
         <button className="ajs-button" onClick={goBack}>Back</button>
     
