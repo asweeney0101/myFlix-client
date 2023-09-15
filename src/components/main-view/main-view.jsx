@@ -89,8 +89,11 @@ export const MainView = () => {
         path="/movies/:movieID"
         element={
           <MovieView 
-          movies = {movies}
-          updateUser = {updateUser} />} 
+          user={user}
+          movies={movies}
+          token={token}
+          updateUser={updateUser}
+          />} 
        />
 
        <Route

@@ -6,23 +6,21 @@ import "../../_styles.scss"
 import "./movie-view.scss";
 
 
-export const MovieView = ({ movies, updateUser }) => {
+export const MovieView = ({ user, movies, token, updateUser }) => {
   const { movieID } = useParams();
   const [movie] = useState(movies.find((m) => m.id === movieID));
   const navigate = useNavigate();
   const goBack = () => {
     navigate(-1);
   }
-  const storedUserData = localStorage.getItem("user");
-  const storedUser = (storedUserData && storedUserData !== "undefined") ? JSON.parse(storedUserData) : null;
-  const username = storedUser.Username;
-  const storedToken = localStorage.getItem("token");
-  const [token, setToken] = useState(storedToken? storedToken : null);
+  
+  const username = user.Username;
+ 
   const [isFavorite, setFavorite] = useState(false);
   
   useEffect(() => {
     
-    if(storedUser.FavoriteMovies &&  storedUser.FavoriteMovies.includes(movieID) ){
+    if(user.FavoriteMovies &&  user.FavoriteMovies.includes(movieID) ){
       setFavorite(true);
     }
   }, []);
