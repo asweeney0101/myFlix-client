@@ -6,7 +6,7 @@ import "../../_styles.scss"
 import "./movie-view.scss";
 
 
-export const MovieView = ({ movies }) => {
+export const MovieView = ({ movies, updateUser }) => {
   const { movieID } = useParams();
   const [movie] = useState(movies.find((m) => m.id === movieID));
   const navigate = useNavigate();
@@ -30,7 +30,8 @@ export const MovieView = ({ movies }) => {
      }
     })
     .then((response) => response.json())
-    .then(() => {
+    .then((res) => {
+        updateUser(res);
         alert("Movie Added to Favorites");
     })
 }
@@ -44,7 +45,8 @@ function removeFromFavorites() {
    }
   })
   .then((response) => response.json())
-  .then(() => {
+  .then((res) => {
+      updateUser(res);
       alert("Movie Removed from Favorites");
   })
 }

@@ -88,7 +88,9 @@ export const MainView = () => {
        <Route
         path="/movies/:movieID"
         element={
-          <MovieView movies = {movies} />} 
+          <MovieView 
+          movies = {movies}
+          updateUser = {updateUser} />} 
        />
 
        <Route
