@@ -37,10 +37,10 @@ export const MovieView = ({ user, movies, token, updateUser }) => {
     .then((res) => {
         updateUser(res);
         setFavorite(true);
-        alert("Movie Added to Favorites");
+        
     })
     .catch((error) => {
-      console.error("Error Adding to Favorites:", error);
+      alert("Error: " + error);
     });
 }
 
@@ -56,10 +56,10 @@ function removeFromFavorites() {
   .then((res) => {
       updateUser(res);
       setFavorite(false);
-      alert("Movie Removed from Favorites");
+      
   })
   .catch((error) => {
-    console.error("Error Removing from Favorites:", error);
+    alert("Error: " + error);
   });
 }
 

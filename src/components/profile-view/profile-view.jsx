@@ -129,6 +129,7 @@ export const ProfileView  = ({ user, movies, token, updateUser }) => {
                     }}
                     minLength="6"
                 />
+                {passwordError && <div style={{color: 'red'}}>{passwordError}</div>}
                  
 
           
