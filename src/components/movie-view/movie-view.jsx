@@ -85,7 +85,7 @@ function removeFromFavorites() {
            <div>
 
            { !isFavorite ? (
-                  <button className="ajs-button" onClick={addToFavorites}>Add to Favorites</button>
+                  <button className={`ajs-button ajs-button-white`} onClick={addToFavorites}>Add to Favorites</button>
             ) : (
                   <button className="ajs-button" onClick={removeFromFavorites}>Remove From Favorites</button>
             )}

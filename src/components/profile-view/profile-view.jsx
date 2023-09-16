@@ -21,7 +21,7 @@ export const ProfileView  = ({ user, movies, token, updateUser }) => {
         return user.FavoriteMovies.includes(movie.id);
     });
     const [show, setShow] = useState(false);
-    const [deregister, setDeregister] = useState(false);
+    
   
 
     const handleShowDelete = () => setShow(true);
@@ -164,7 +164,7 @@ export const ProfileView  = ({ user, movies, token, updateUser }) => {
 
 
             <div>
-                <button onClick={handleShowDelete} >Delete Account</button>
+                <button className={`ajs-button ajs-button-red`} onClick={handleShowDelete} >Delete Account</button>
             </div>
 
 

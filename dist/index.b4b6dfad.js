@@ -27403,7 +27403,7 @@ const MovieView = ({ user, movies, token, updateUser })=>{
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                 children: !isFavorite ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-                    className: "ajs-button",
+                    className: `ajs-button ajs-button-white`,
                     onClick: addToFavorites,
                     children: "Add to Favorites"
                 }, void 0, false, {
@@ -43421,7 +43421,6 @@ const ProfileView = ({ user, movies, token, updateUser })=>{
         return user.FavoriteMovies.includes(movie.id);
     });
     const [show, setShow] = (0, _react.useState)(false);
-    const [deregister, setDeregister] = (0, _react.useState)(false);
     const handleShowDelete = ()=>setShow(true);
     const handleCloseDelete = ()=>setShow(false);
     function editUser() {
@@ -43559,6 +43558,7 @@ const ProfileView = ({ user, movies, token, updateUser })=>{
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                 children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                    className: `ajs-button ajs-button-red`,
                     onClick: handleShowDelete,
                     children: "Delete Account"
                 }, void 0, false, {
@@ -43663,7 +43663,7 @@ const ProfileView = ({ user, movies, token, updateUser })=>{
         ]
     }, void 0, true);
 };
-_s(ProfileView, "q+xs4yaRojNr9ihqtK/gypQx9xA=");
+_s(ProfileView, "EQWQkx4zGKtPYP2QEm2VX2V3u50=");
 _c = ProfileView;
 var _c;
 $RefreshReg$(_c, "ProfileView");

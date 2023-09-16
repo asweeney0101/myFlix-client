@@ -4,11 +4,11 @@ $main-text-color: black;
 
 $hover-color: rgb(5,99,193);
 
-.ajs-button {
+.ajs-button{
     padding: 4px 12px 4px 12px;
     color: $main-text-color;
     background-color: $main-bg-color;
-    border: none;
+    
     border-radius: 4px;
     
 
@@ -21,6 +21,11 @@ $hover-color: rgb(5,99,193);
   transition: transform .2s ease-in-out;
  
 }  
+
+.ajs-button-white{
+  background-color: white;
+
+}
 
 .ajs-button-red{
   background-color: red;
