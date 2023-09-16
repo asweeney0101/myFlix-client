@@ -22,14 +22,10 @@ export const ProfileView  = ({ user, movies, token, updateUser }) => {
     });
     const [show, setShow] = useState(false);
     const [deregister, setDeregister] = useState(false);
+  
 
-    
-
-    const handleShow = () => setShow(true);
-    const handleClose = () => setShow(false);
-
-
-   
+    const handleShowDelete = () => setShow(true);
+    const handleCloseDelete = () => setShow(false);
 
     
     function editUser() {
@@ -108,9 +104,6 @@ export const ProfileView  = ({ user, movies, token, updateUser }) => {
 
 
 
-  
-
-
  return (
    
   <>
@@ -171,7 +164,7 @@ export const ProfileView  = ({ user, movies, token, updateUser }) => {
 
 
             <div>
-                <button onClick={deleteUser} >Delete Account</button>
+                <button onClick={handleShowDelete} >Delete Account</button>
             </div>
 
 
@@ -185,6 +178,26 @@ export const ProfileView  = ({ user, movies, token, updateUser }) => {
                     ))}
                 </Row>
             </div>
+
+            <Modal show={show} onHide={handleCloseDelete}>
+                 <Modal.Header closeButton>
+                    <Modal.Title>Delete Your Account?</Modal.Title> 
+                 </Modal.Header>
+                 <Modal.Body>
+                    <Modal.Title>This is Irreversible</Modal.Title>
+                 </Modal.Body>
+                 <Modal.Footer>
+                   <button className={`ajs-button ajs-button-red`} onClick={deleteUser}>
+                     Yes, Delete my Account
+                   </button>
+                  
+                 </Modal.Footer>
+            </Modal>
+
+
+
+
+
 
 
   </> 

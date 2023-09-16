@@ -21,3 +21,11 @@ $hover-color: rgb(5,99,193);
   transition: transform .2s ease-in-out;
  
 }  
+
+.ajs-button-red{
+  background-color: red;
+}
+
+.ajs-button-red:hover{
+  color: white;
+} 
