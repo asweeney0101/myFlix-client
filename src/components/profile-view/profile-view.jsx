@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { Card, Container, Row, Col, Modal, Form } from "react-bootstrap";
-// import { Link } from "react-router-dom";
 import { movieListBreakpoints } from "../movie-list/movie-list";
 import { MovieCard } from "../movie-card/movie-card.jsx";
 import "../../_styles.scss"
@@ -84,6 +83,30 @@ export const ProfileView  = ({ user, movies, token, updateUser }) => {
     };
 
 
+    function deleteUser() {
+        fetch("https://ajs-movie-api-598adfef849b.herokuapp.com/users/" + username,  {
+        method: "DELETE",
+        headers: {
+           "Content-Type": "application/json",
+           Authorization: `Bearer ${token}`
+         }
+        })
+        .then((response) => {
+            if (response.ok) {
+                return response.json();
+            } 
+
+        })
+        .then(() => {
+            alert("Your account is deleted successfully!");
+            updateUser(null);
+            localStorage.clear();
+            location.replace('/');
+        })
+       
+      }
+
+
 
   
 
@@ -145,6 +168,11 @@ export const ProfileView  = ({ user, movies, token, updateUser }) => {
                      onChange={(e) => setBirthday(e.target.value)}                     
                 />
             <button onClick={editUser} >Submit</button>
+
+
+            <div>
+                <button onClick={deleteUser} >Delete Account</button>
+            </div>
 
 
             <div className="movieList">
