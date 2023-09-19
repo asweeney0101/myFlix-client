@@ -1,15 +1,20 @@
 import PropTypes from "prop-types";
 import { Card } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import "../movie-card/movie-card.scss";
 
-export const MovieCard = ({ movie, onMovieClick }) => {
+
+export const MovieCard = ({ movie }) => {
   return (
-    <Card className="h-100" style={{ cursor: "pointer"}} onClick={() => onMovieClick(movie)} >
-      <Card.Img variant="top" src={movie.ImagePath} />
-      <Card.Body>
-        <Card.Title>{movie.Title}</Card.Title>
-        <Card.Text>{movie.Director}</Card.Text>
-      </Card.Body>
-    </Card>
+    <Link to={`/movies/${encodeURIComponent(movie.id)}`} className="movieCard">
+      <Card className="h-100">
+        <Card.Img variant="top" src={movie.ImagePath} />
+          <Card.Body>
+            <Card.Title>{movie.Title}</Card.Title>
+            <Card.Text>{movie.Director}</Card.Text>
+         </Card.Body>
+      </Card>
+    </Link>
   );
 };
 
@@ -18,6 +23,5 @@ MovieCard.propTypes = {
     Title: PropTypes.string.isRequired, 
     ImagePath: PropTypes.string.isRequired, 
     Director: PropTypes.string
-  }).isRequired,
-  onMovieClick: PropTypes.func.isRequired
+  }).isRequired
 };

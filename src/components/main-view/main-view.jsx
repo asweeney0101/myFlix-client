@@ -1,12 +1,11 @@
 import { useEffect, useState } from "react";
 
-
-
 import { IndexView } from "../index-view/index-view.jsx";
+import { NavBar } from "../nav-bar/nav-bar.jsx"
 import { MovieList } from "../movie-list/movie-list.jsx";
-import { MovieView } from "../movie-view/movie-view.jsx"
-import { Container, Row, Col, Button } from "react-bootstrap";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { MovieView } from "../movie-view/movie-view.jsx";
+import { ProfileView } from "../profile-view/profile-view.jsx";
+import { Routes, Route } from "react-router-dom";
 
 export const MainView = () => {
    const storedUserData = localStorage.getItem("user");
@@ -15,9 +14,13 @@ export const MainView = () => {
    const [user, setUser] = useState(storedUser? storedUser : null);
    const [token, setToken] = useState(storedToken? storedToken : null);
    const [movies, setMovies] = useState([]);
-   const [selectedMovie, setSelectedMovie] = useState(null);
+
    const [view, setView] = useState("login");
    
+   const updateUser = (newUserData) => {
+    setUser(newUserData);
+    localStorage.setItem("user", JSON.stringify(newUserData)); 
+ };
 
    useEffect(() => {
     if (token) {
@@ -32,7 +35,7 @@ export const MainView = () => {
       })
       .then((data) => {
         const moviesFromAPI = data.map((movie) => {
-          console.log('Movie:', movie);  
+           
           return {
             id: movie._id,
             Title: movie.Title,
@@ -52,43 +55,65 @@ export const MainView = () => {
   }, [token]);
 
 
-
-  // if (!user) {
     return (
+       <>
+        
+        
+        { user && location.href !== "http://localhost:8000/" ? <NavBar
+        setUser = {setUser}
+        setToken = {setToken}
+         /> : <> </> }  
 
-      <BrowserRouter>
+     
       <Routes>
 
        <Route 
        path="/"
-       element={ <IndexView 
-        setView = {setView}
-        view = {view} 
+       element={ 
+        <IndexView 
+         setView = {setView}
+         view = {view}
+         setToken = {setToken}
+         setUser = {setUser}     
         /> 
-        } />
+        }/>
 
        <Route
        path="/movies"
        element={
-        <MovieList movies={movies}
-        setSelectedMovie = {setSelectedMovie}
-        setToken = {setToken}
-        setUser = {setUser}
-        /> 
-       } />
-       
+        <MovieList movies={movies} /> 
+       }/>
        
 
        <Route
         path="/movies/:movieID"
         element={
-          <MovieView movies={movies} />} 
+          <MovieView 
+          user={user}
+          movies={movies}
+          token={token}
+          updateUser={updateUser}
+          />} 
        />
 
+       <Route
+        path="/profile"
+       element={
+          <ProfileView 
+          user={user}
+          movies={movies}
+          token={token}
+          updateUser={updateUser}
+          />}
+       />
+
+
       </Routes>
-      </BrowserRouter>
+
+       
+      
+      </>
     );
   
 };
-
 

@@ -1,0 +1,15 @@
+.movieList {
+    padding: 20px;
+    margin-top: 20px;
+    .row {
+        justify-content: center;
+        .col {
+            padding: 10px;
+        }
+    }
+}
+
+.movieList h3{
+    text-align: center;
+    margin-bottom: 2rem;
+}

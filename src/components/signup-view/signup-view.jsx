@@ -2,6 +2,7 @@ import{ useState } from "react";
 import { Button, Form } from "react-bootstrap";
 
 export const SignupView = ({ onSignUp }) => {
+  const [name, setName] = useState("")
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -14,6 +15,7 @@ export const SignupView = ({ onSignUp }) => {
 
 
     const data = {
+      Name: name,
       Username: username,
       Password: password,
       Email: email,
@@ -26,8 +28,8 @@ export const SignupView = ({ onSignUp }) => {
       headers: {
         "Content-Type": "application/json"
       }})
-       .then((response) => {
-       if (response.ok) {
+       .then((res) => {
+       if (res.ok) {
          alert("Signup successful");
          onSignUp();
        } else {
@@ -41,7 +43,17 @@ export const SignupView = ({ onSignUp }) => {
     
     <Form onSubmit={handleSubmit} >
      
-      <Form.Group controlId="formPassword">
+     <Form.Group controlId="formName">
+        <Form.Label>Name:</Form.Label>
+        <Form.Control
+          type="text"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          required
+        />
+      </Form.Group>
+
+      <Form.Group controlId="formUserName">
         <Form.Label>Username:</Form.Label>
         <Form.Control
           type="text"
@@ -82,7 +94,7 @@ export const SignupView = ({ onSignUp }) => {
         {passwordError && <div style={{color: 'red'}}>{passwordError}</div>}
       </Form.Group>
 
-      <Form.Group>
+      <Form.Group controlId="formEmail">
         <Form.Label>Email:</Form.Label>
         <Form.Control
           type="email"
@@ -92,7 +104,7 @@ export const SignupView = ({ onSignUp }) => {
         />
       </Form.Group>
 
-      <Form.Group>
+      <Form.Group controlId="formBirthday">
         <Form.Label>Birthday:</Form.Label>
         <Form.Control
           type="date"

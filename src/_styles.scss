@@ -1,0 +1,36 @@
+
+$main-bg-color: rgb(180, 180, 234);
+$main-text-color: black;
+
+$hover-color: rgb(5,99,193);
+
+.ajs-button{
+    padding: 4px 12px 4px 12px;
+    color: $main-text-color;
+    background-color: $main-bg-color;
+    
+    border-radius: 4px;
+    
+
+  }
+ 
+.ajs-button:hover{
+  color: $hover-color;
+  transition: color .2s ease-in-out;
+  transform: scale(1.05);
+  transition: transform .2s ease-in-out;
+ 
+}  
+
+.ajs-button-white{
+  background-color: white;
+
+}
+
+.ajs-button-red{
+  background-color: red;
+}
+
+.ajs-button-red:hover{
+  color: white;
+} 
