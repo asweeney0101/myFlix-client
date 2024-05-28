@@ -13,4 +13,4 @@ Hosted on Netlify.
 ## Access
 
 Anyone can register for an account and sign in via:
-https://my-flix-ajs.netlify.app/
+<a> https://my-flix-ajs.netlify.app/ </a>
